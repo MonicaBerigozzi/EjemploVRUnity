@@ -1,0 +1,28 @@
+allprojects {
+    buildscript {
+        repositories {
+            google()
+            mavenCentral()
+            maven { url 'https://repo1.maven.org/maven2/' }
+        }
+
+        dependencies {
+            // Si tienes problemas con la versión de Gradle, descomenta la siguiente línea
+             classpath 'com.android.tools.build:gradle:7.1.2'
+**BUILD_SCRIPT_DEPS**
+        }
+    }
+
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://repo1.maven.org/maven2/' }
+        flatDir {
+            dirs "${project(':unityLibrary').projectDir}/libs"
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
